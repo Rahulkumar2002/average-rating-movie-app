@@ -1,4 +1,6 @@
-const { userDetails, searchMovie, updateDetails } = require("../controller/user");
+const { searchMovie } = require("../controller/searchMovie");
+const { updateDetails } = require("../controller/updateDetails");
+const { userDetails } = require("../controller/userDetails");
 
 const router = require("express").Router() ; 
 

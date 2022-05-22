@@ -1,4 +1,3 @@
-const res = require("express/lib/response");
 const Movie = require("../models/Movie");
 const User = require("../models/User");
 
@@ -220,4 +219,3 @@ const updateUser = async (movie, userId, rating) => {
     console.log("Error occured in updateUser  " + err);
   }
 };
-module.exports = { userDetails, searchMovie, updateDetails };

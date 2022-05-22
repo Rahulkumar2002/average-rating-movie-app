@@ -23,8 +23,6 @@ const registerUser = async (req, res) => {
         process.env.PASS_SEC
       ).toString(),
     });
-    console.log(req.body.email);
-    console.log(req.body.pass);
     const user = await newUser.save();
     res.status(201).json(user);
   } catch (err) {
@@ -33,7 +31,7 @@ const registerUser = async (req, res) => {
 };
 
 let counter = 0 ; 
-
+// LoginUse Function : 
 const loginUser = async (req, res) => {
   try { 
       
