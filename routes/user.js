@@ -5,7 +5,7 @@ const { userDetails } = require("../controller/userDetails");
 const router = require("express").Router() ; 
 
 // To give details : 
-router.post("/user" , userDetails) ;  
+router.post("/user" ,userDetails) ;  
 
 // To update the rating : 
 router.patch("/update" , updateDetails) ; 

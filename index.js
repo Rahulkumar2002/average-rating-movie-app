@@ -7,14 +7,13 @@ const AuthRoutes = require("./routes/auth") ;
 const UserRoutes = require("./routes/user") ; 
 
 dotenv.config();
-const app = express();
-const port = process.env.PORT || 8080;
+const app = express() ;
+const port = process.env.PORT || 8080 ;
 
+// middleware :
 app.use(express.json());
 app.use(morgan("common"));
 app.use(helmet());
-
-// middleware :
 
 // Authentication Route : 
 app.use("/api/v1/auth" , AuthRoutes) ; 
