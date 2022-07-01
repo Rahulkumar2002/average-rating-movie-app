@@ -1,5 +1,5 @@
-const Movie = require("../models/Movie");
-const User = require("../models/User");
+const Movie = require("../models/movie.models");
+const User = require("../models/user.models");
 
 const userDetails = async (req, res) => {
   try {

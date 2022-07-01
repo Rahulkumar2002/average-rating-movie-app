@@ -1,6 +1,6 @@
 
-const Movie = require("../models/Movie");
-const User = require("../models/User");
+const Movie = require("../models/movie.models");
+const User = require("../models/user.models");
 
 
 // To update rating first we have to update the rating in Movies(ratingArray , avgRating ) and then in Users(rating) .

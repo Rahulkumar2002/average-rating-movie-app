@@ -1,4 +1,4 @@
-const Movie = require("../models/Movie");
+const Movie = require("../models/movie.models");
 
 // Searching for movies with the movieName in params  inside Movie collection : 
 
