@@ -12,7 +12,8 @@ const searchMovie = async (req, res) => {
       },
       {
         _id: 0,
-        _v: 0,
+        avgRating:1,
+        name:1
       }
     ).limit(10);
 

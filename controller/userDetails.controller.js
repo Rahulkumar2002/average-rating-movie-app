@@ -1,11 +1,25 @@
 const Movie = require("../models/movie.models");
 const User = require("../models/user.models");
 
+const getUser = async (req, res) => {
+  try {
+    const user = await User.findOne({ userId: req.user.id });
+
+    if (!user) {
+      throw new Error("User not found.");
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json("User not found!");
+  }
+};
+
 const userDetails = async (req, res) => {
   try {
     const userDetails = new User({
       name: req.body.name,
-      userId: req.body.userId,
+      userId: req.user.id,
       age: req.body.age,
       movies: req.body.movies,
     });
@@ -19,7 +33,7 @@ const userDetails = async (req, res) => {
     updatingRecords(userDetails);
     const savedUser = await userDetails.save();
     // Fetching new user's favourite movie and adding it in Movie collection if not their already or just adding their ratings in ratingArray
-    addToMovie(req.body.movies, req.body.userId);
+    addToMovie(req.body.movies, req.user.id);
     // Sending our new user.
     res.status(201).json(savedUser);
   } catch (err) {
@@ -39,7 +53,7 @@ const checkRatingValue = (movies) => {
   return false;
 };
 
-// Updating updateRecords for new User. 
+// Updating updateRecords for new User.
 const updatingRecords = async (user) => {
   try {
     let i = 0;
@@ -93,7 +107,7 @@ const addToMovie = async (moviesArray, userId) => {
   }
 };
 
-// Finding averageRating : 
+// Finding averageRating :
 const avgRating = (movie) => {
   let i = 0,
     sum = 0;
@@ -104,5 +118,4 @@ const avgRating = (movie) => {
   return sum / movie.ratingArray.length;
 };
 
-
-module.exports = {userDetails} ; 
+module.exports = { userDetails, getUser };

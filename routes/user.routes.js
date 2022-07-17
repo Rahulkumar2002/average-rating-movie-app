@@ -1,14 +1,19 @@
 const { searchMovie } = require("../controller/searchMovie.controller");
 const { updateDetails } = require("../controller/updateDetails.controller");
-const { userDetails } = require("../controller/userDetails.controller");
+const { userDetails, getUser } = require("../controller/userDetails.controller");
+const verifyToken = require("../middleware/verifyToken.middleware");
 
 const router = require("express").Router() ; 
+// To get a user : 
+
+router.get("/user" , verifyToken , getUser ); 
+
 
 // To give details : 
-router.post("/user" ,userDetails) ;  
+router.post("/user" ,verifyToken , userDetails) ;  
 
 // To update the rating : 
-router.patch("/update" , updateDetails) ; 
+router.patch("/update" , verifyToken , updateDetails) ; 
 
 // To search : 
 
@@ -21,6 +26,6 @@ So I must provide index to the all the movies.
 Then it can be fetched accordingly.
 */
 
-router.get("/search/:name" , searchMovie) ; 
+router.get("/search/:name" , verifyToken ,searchMovie) ; 
 
 module.exports = router ; 
